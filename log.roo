@@ -1,0 +1,61 @@
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-10-07 00:10:47
+project --topLevelPackage hu.acsanyi.roo.pizzashop --projectName pizzashop --java 6 --packaging JAR
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-10-07 00:10:52
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-10-07 00:12:21
+quit
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-10-07 00:23:15
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-10-07 00:24:47
+hint
+jpa setup --provider HIBERNATE --database MSSQL
+entity jpa --class ~.domain.Topping --testAutomatically
+field string --fieldName name --notNull --sizeMin 2
+entity jpa --class ~.domain.Base --testAutomatically
+field string --fieldName name --notNull --sizeMin 2
+entity jpa --class ~.domain.Pizza --testAutomatically
+field string --fieldName name --notNull --sizeMin 2
+field number --fieldName price --type java.lang.Float
+field set --fieldName toppings --type ~.domain.Topping
+entity jpa --class ~.domain.PizzaOrder --testAutomatically 
+field string --fieldName name --notNull --sizeMin 2
+field string --fieldName address --sizeMax 30
+field number --fieldName total --type java.lang.Float 
+field date --fieldName deliveryDate --type java.util.Date
+field set --fieldName pizzas --type ~.domain.Pizza
+service --entity ~.domain.Topping --interface ~.service.ToppingService
+service --entity ~.domain.Base --interface ~.service.BaseService
+service --entity ~.domain.Pizza --interface ~.service.PizzaService
+service --entity ~.domain.PizzaOrder --interface ~.service.PizzaOrderService
+web mvc setup
+web mvc all --package ~.web
+security setup
+// [failed] perform eclipse
+// [failed] perform package
+quit
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-10-07 00:38:20
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-10-07 00:38:31
+pgp automatic trust
+osgi obr url add --url http://spring-roo-repository.springsource.org/repository.xml
+osgi obr start --bundleSymbolicName org.springframework.roo.addon.cloud.foundry
+// [failed] cloud foundry login --email cs_Ati@yahoo.com --password XAHSTWzM
+cloud foundry login --email cs_ati@yahoo.com --password XAHSTWzM
+// [failed] cloud foundry deploy --appName pizzashop --path /target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+// [failed] cloud foundry deploy --appName roo-pizzashop --path target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+// [failed] cloud foundry deploy --instances 1 --appName roo-pizzashop --path /target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+// [failed] cloud foundry deploy --appName roo-pizzashop --instances 1 --path /target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+cloud foundry delete app --appName spring-rest
+// [failed] cloud foundry deploy --appName roo-pizzashop --instances 1 --path /target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+hint
+// [failed] cloud foundry deploy --appName roo-pizzashop --path target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+cloud foundry deploy --appName spring-demo --path target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+cloud foundry create service --serviceName pizzashop-mysql --serviceType mysql --appName spring-demo
+cloud foundry bind service --serviceName pizzashop-mysql --appName spring-demo
+cloud foundry start app --appName spring-demo
+json all 
+cloud foundry deploy --appName spring-demo --path target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+cloud foundry restart app --appName spring-demo
+web mvc all --package ~.web
+controller all --package hu.acsanyi.roo.pizzashop.controller
+web mvc json all 
+cloud foundry deploy --appName spring-demo --path target/pizzashop-0.1.0.BUILD-SNAPSHOT.war --memory 512
+cloud foundry restart app --appName spring-demo
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-10-07 02:29:22

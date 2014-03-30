@@ -1,0 +1,6 @@
+#surefire_0
+#Sun Oct 07 00:33:22 CEST 2012
+user.dir=D\:\\work\\flex\\workspace_sts_3\\pizzashop
+localRepository=C\:\\Users\\Atka\\.m2\\repository
+basedir=D\:\\work\\flex\\workspace_sts_3\\pizzashop
+Dmaven.test.skip=true
